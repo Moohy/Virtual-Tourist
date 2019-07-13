@@ -11,15 +11,15 @@ import MapKit
 
 struct API {
     static func getPhotosUrl(with coordinate: CLLocationCoordinate2D, pageNum: Int, completion: @escaping ([URL]?, Error?, String?) -> ()){
-        let params = [ Constants.FlickerParameterKeys.Method: Constants.FlickerParameterValues.SearchMethod,
-                       Constants.FlickerParameterKeys.APIKey: Constants.FlickerParameterValues.APIKey,
-                       Constants.FlickerParameterKeys.BondingBox: bboxString(for: coordinate),
-                       Constants.FlickerParameterKeys.SafeSearch: Constants.FlickerParameterValues.UseSafeSearch,
-                       Constants.FlickerParameterKeys.Extras: Constants.FlickerParameterValues.MediumURL,
-                       Constants.FlickerParameterKeys.Format: Constants.FlickerParameterValues.ResponseFormat,
-                       Constants.FlickerParameterKeys.NoJSONCallback: Constants.FlickerParameterValues.DisableJSONCallback,
-                    Constants.FlickerParameterKeys.Pages: pageNum,
-                    Constants.FlickerParameterKeys.PerPage: 9
+        let params = [ Constants.FlickrParameterKeys.Method: Constants.FlickrParameterValues.SearchMethod,
+                       Constants.FlickrParameterKeys.APIKey: Constants.FlickrParameterValues.APIKey,
+                       Constants.FlickrParameterKeys.BondingBox: bboxString(for: coordinate),
+                       Constants.FlickrParameterKeys.SafeSearch: Constants.FlickrParameterValues.UseSafeSearch,
+                       Constants.FlickrParameterKeys.Extras: Constants.FlickrParameterValues.MediumURL,
+                       Constants.FlickrParameterKeys.Format: Constants.FlickrParameterValues.ResponseFormat,
+                       Constants.FlickrParameterKeys.NoJSONCallback: Constants.FlickrParameterValues.DisableJSONCallback,
+                    Constants.FlickrParameterKeys.Pages: pageNum,
+                    Constants.FlickrParameterKeys.PerPage: 9
         ] as [String:Any]
         
         let request = URLRequest(url: getURL(from: params))
@@ -76,20 +76,20 @@ struct API {
         let lat = coordinate.latitude
         let long = coordinate.longitude
         
-        let minLong = max(long - Constants.Flicker.SearchBBoxHalfWidth, Constants.Flicker.SearchLongRange.0)
-        let minLat = max(lat - Constants.Flicker.SearchBBoxHalfHight, Constants.Flicker.SearchLatRange.0)
+        let minLong = max(long - Constants.Flickr.SearchBBoxHalfWidth, Constants.Flickr.SearchLongRange.0)
+        let minLat = max(lat - Constants.Flickr.SearchBBoxHalfHight, Constants.Flickr.SearchLatRange.0)
         
-        let maxLong = min(long + Constants.Flicker.SearchBBoxHalfWidth, Constants.Flicker.SearchLongRange.1)
-        let maxLat = min(lat + Constants.Flicker.SearchBBoxHalfHight, Constants.Flicker.SearchLatRange.1)
+        let maxLong = min(long + Constants.Flickr.SearchBBoxHalfWidth, Constants.Flickr.SearchLongRange.1)
+        let maxLat = min(lat + Constants.Flickr.SearchBBoxHalfHight, Constants.Flickr.SearchLatRange.1)
         
         return "\(minLong),\(minLat),\(maxLong),\(maxLat)"
     }
     
     static func getURL(from param: [String:Any]) -> URL {
         var componants = URLComponents()
-        componants.scheme = Constants.Flicker.APISchema
-        componants.host = Constants.Flicker.APIHost
-        componants.path = Constants.Flicker.APIPath
+        componants.scheme = Constants.Flickr.APISchema
+        componants.host = Constants.Flickr.APIHost
+        componants.path = Constants.Flickr.APIPath
         componants.queryItems = [URLQueryItem]()
         for (key, value) in param {
             let queryItem = URLQueryItem(name: key, value: "\(value)")

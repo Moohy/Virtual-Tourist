@@ -13,12 +13,28 @@ import CoreData
 class MapVC: UIViewController, MKMapViewDelegate, NSFetchedResultsControllerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
+    
     var fetchedResultsController: NSFetchedResultsController<Pin>!
     
     var context: NSManagedObjectContext {
         return DataController.sharedInstance.viewContext
         
     }
+    
+    
+    @IBAction func gesRecg(_ sender: UILongPressGestureRecognizer) {
+        if sender.state != .began {
+            return
+        }
+        
+        let touchedPlace = sender.location(in: mapView)
+        
+        let pin = Pin(context: context)
+        pin.coordinate = mapView.convert(touchedPlace, toCoordinateFrom: mapView)
+        
+        try? context.save()
+    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

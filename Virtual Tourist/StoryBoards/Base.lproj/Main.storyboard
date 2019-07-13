@@ -21,6 +21,10 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2OT-86-MIp">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <gestureRecognizers/>
+                                <connections>
+                                    <outlet property="delegate" destination="Fky-Dz-BEE" id="fh2-8g-SAS"/>
+                                    <outletCollection property="gestureRecognizers" destination="bXS-Ck-pep" appends="YES" id="rJa-DY-6um"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -35,10 +39,15 @@
                     <navigationItem key="navigationItem" title="Virtual Tourist" id="HUX-Cs-0Yn"/>
                     <connections>
                         <outlet property="mapView" destination="2OT-86-MIp" id="jn6-hx-DEb"/>
-                        <segue destination="dPj-X5-Iu5" kind="push" id="0k9-eO-ey8"/>
+                        <segue destination="dPj-X5-Iu5" kind="push" identifier="ShowPhotos" id="0k9-eO-ey8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FOu-wy-beX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="bXS-Ck-pep">
+                    <connections>
+                        <action selector="gesRecg:" destination="Fky-Dz-BEE" id="Ibe-6J-dpo"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="747.82608695652175" y="-236.38392857142856"/>
         </scene>
@@ -61,7 +70,7 @@
         <!--PhotoVC-->
         <scene sceneID="aA9-hS-3sx">
             <objects>
-                <viewController id="dPj-X5-Iu5" customClass="PhotoVC" sceneMemberID="viewController">
+                <viewController id="dPj-X5-Iu5" customClass="PhotoVC" customModule="Virtual_Tourist" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="My4-4e-Spq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -78,7 +87,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="lGL-LY-tvC"/>
                                 </items>
                             </toolbar>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="cUq-AU-pyG">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="cUq-AU-pyG">
                                 <rect key="frame" x="197" y="827.5" width="20" height="20"/>
                             </activityIndicatorView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Qw3-Mv-rbh">
@@ -114,6 +123,10 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="dPj-X5-Iu5" id="6rA-Vw-3Fj"/>
+                                    <outlet property="delegate" destination="dPj-X5-Iu5" id="DhS-2b-yQM"/>
+                                </connections>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No images found!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFx-x1-I1D">
                                 <rect key="frame" x="139.5" y="438" width="135" height="20.5"/>
@@ -132,8 +145,10 @@
                             <constraint firstItem="hBL-qS-jLO" firstAttribute="trailing" secondItem="lsq-DC-3c6" secondAttribute="trailing" id="Jyc-R8-EbJ"/>
                             <constraint firstItem="hBL-qS-jLO" firstAttribute="top" secondItem="Qw3-Mv-rbh" secondAttribute="bottom" id="Lih-nO-SlF"/>
                             <constraint firstItem="Qw3-Mv-rbh" firstAttribute="leading" secondItem="lsq-DC-3c6" secondAttribute="leading" id="UTs-Ea-874"/>
+                            <constraint firstItem="lsq-DC-3c6" firstAttribute="trailing" secondItem="cUq-AU-pyG" secondAttribute="trailing" constant="197" id="Ugi-pP-1hb"/>
                             <constraint firstItem="Qw3-Mv-rbh" firstAttribute="trailing" secondItem="lsq-DC-3c6" secondAttribute="trailing" id="WTa-wM-9Ks"/>
-                            <constraint firstItem="cUq-AU-pyG" firstAttribute="centerY" secondItem="hBL-qS-jLO" secondAttribute="centerY" id="oox-ri-UHQ"/>
+                            <constraint firstItem="cUq-AU-pyG" firstAttribute="leading" secondItem="lsq-DC-3c6" secondAttribute="leading" constant="197" id="YXY-uG-vab"/>
+                            <constraint firstItem="lsq-DC-3c6" firstAttribute="bottom" secondItem="cUq-AU-pyG" secondAttribute="bottom" constant="14.5" id="nmI-YQ-FbK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lsq-DC-3c6"/>
                     </view>

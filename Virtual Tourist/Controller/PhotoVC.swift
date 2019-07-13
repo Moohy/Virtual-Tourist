@@ -33,6 +33,7 @@ class PhotoVC: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        label.isHidden = true
         setupFetchedResultsController()
         
     }
@@ -45,7 +46,7 @@ class PhotoVC: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     func setupFetchedResultsController() {
         let fetchedReq: NSFetchRequest<Photo> = Photo.fetchRequest()
         fetchedReq.predicate = NSPredicate(format: "pin == %@", pin)
-        fetchedReq.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        fetchedReq.sortDescriptors = [NSSortDescriptor(key: "creationImage", ascending: false)]
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchedReq, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
         
@@ -53,6 +54,7 @@ class PhotoVC: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             try fetchedResultsController.performFetch()
             if isNotNil {
                 updateView(processing: false)
+                print("there are pics")
             }else {
                 reloadButtonTapped(self)
             }
@@ -101,11 +103,16 @@ class PhotoVC: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     func updateView(processing: Bool){
         collectionView.isUserInteractionEnabled = !processing
         if processing{
-            reloadButton.title = ""
+            reloadButton.isEnabled = false
+            reloadButton.tintColor = .clear
             activityInd.startAnimating()
+            activityInd.isHidden = false
+            
         }else {
             activityInd.stopAnimating()
-            reloadButton.title = "Reload"
+            activityInd.isHidden = true
+            reloadButton.isEnabled = true
+            reloadButton.tintColor = .darkGray
         }
     }
     

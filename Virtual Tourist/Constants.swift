@@ -10,9 +10,9 @@ import Foundation
 import MapKit
 
 struct Constants{
-    struct Flicker{
+    struct Flickr{
         static let APISchema = "https"
-        static let APIHost = "api.flicker.com"
+        static let APIHost = "api.flickr.com"
         static let APIPath = "/services/rest"
         
         static let SearchBBoxHalfWidth = 1.0
@@ -22,7 +22,7 @@ struct Constants{
         static let SearchLongRange = (-180.0, 180.0)
     }
     
-    struct FlickerParameterKeys {
+    struct FlickrParameterKeys {
         static let Method       = "method"
         static let APIKey       = "api_key"
         static let Extras       = "extras"
@@ -35,12 +35,12 @@ struct Constants{
         static let PerPage      = "per_page"
     }
     
-    struct FlickerParameterValues {
-        static let SearchMethod         = "flicker.photos.search"
-        static let APIKey               = "1e5cb27bfbaea87df9516459ac4e53a"
+    struct FlickrParameterValues {
+        static let SearchMethod         = "flickr.photos.search"
+        static let APIKey               = "1e5cb27bfbaea87df9516459ac4e535a"
         static let ResponseFormat       = "json"
         static let DisableJSONCallback  = "1"
-        static let GallaryPhotosMethod  = "flicker.galleries.getPhotos"
+        static let GallaryPhotosMethod  = "flickr.galleries.getPhotos"
         static let MediumURL            = "url_m"
         static let UseSafeSearch        = "1"
     }
