@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1036C73F22CDC09700C84813 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1036C73E22CDC09700C84813 /* API.swift */; };
 		1036C74122CDC48100C84813 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1036C74022CDC48100C84813 /* Constants.swift */; };
+		1036C74322DF39EE00C84813 /* photoViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1036C74222DF39EE00C84813 /* photoViewVC.swift */; };
 		103CCF7822BCF6F300A5C3B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103CCF7722BCF6F300A5C3B7 /* AppDelegate.swift */; };
 		103CCF7A22BCF6F300A5C3B7 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103CCF7922BCF6F300A5C3B7 /* UIViewController.swift */; };
 		103CCF7D22BCF6F300A5C3B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 103CCF7B22BCF6F300A5C3B7 /* Main.storyboard */; };
@@ -46,6 +47,7 @@
 /* Begin PBXFileReference section */
 		1036C73E22CDC09700C84813 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		1036C74022CDC48100C84813 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1036C74222DF39EE00C84813 /* photoViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photoViewVC.swift; sourceTree = "<group>"; };
 		103CCF7422BCF6F300A5C3B7 /* Virtual Tourist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Virtual Tourist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		103CCF7722BCF6F300A5C3B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		103CCF7922BCF6F300A5C3B7 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 			children = (
 				103CCFA922BFA7D400A5C3B7 /* MapVC.swift */,
 				103CCFAD22BFA82D00A5C3B7 /* PhotoVC.swift */,
+				1036C74222DF39EE00C84813 /* photoViewVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				103CCFBB22CC4CA000A5C3B7 /* CustomImageView.swift in Sources */,
 				103CCF7822BCF6F300A5C3B7 /* AppDelegate.swift in Sources */,
 				103CCFBE22CC53AC00A5C3B7 /* VT.xcdatamodeld in Sources */,
+				1036C74322DF39EE00C84813 /* photoViewVC.swift in Sources */,
 				1036C74122CDC48100C84813 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

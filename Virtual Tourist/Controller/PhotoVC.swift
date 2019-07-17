@@ -54,7 +54,6 @@ class PhotoVC: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             try fetchedResultsController.performFetch()
             if isNotNil {
                 updateView(processing: false)
-                print("there are pics")
             }else {
                 reloadButtonTapped(self)
             }
@@ -81,7 +80,7 @@ class PhotoVC: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         API.getPhotosUrl(with: pin.coordinate, pageNum: pageNum) {(urls, error, errorMsg) in DispatchQueue.main.async {
                 self.updateView(processing: false)
                 guard (error == nil) && (errorMsg == nil) else {
-//                    self.alert(title: "Error", message: error?.localizedDescription ?? errorMsg)
+
                     return
                 }
             
@@ -134,8 +133,10 @@ class PhotoVC: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let photo = fetchedResultsController.object(at: indexPath)
-        context.delete(photo)
-        try? context.save()
+        performSegue(withIdentifier: "ViewImage", sender: photo.getImage())
+    
+//        context.delete(photo)
+//        try? context.save()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -169,6 +170,13 @@ class PhotoVC: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         
         if type != .update{
             collectionView.reloadData()
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ViewImage" {
+            let photoViewVC = segue.destination as! photoViewVC
+            photoViewVC.image = sender as? UIImage
         }
     }
     
